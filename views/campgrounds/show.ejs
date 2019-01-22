@@ -1,0 +1,123 @@
+<% include ../partials/header%>
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Yelp Camp</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info1</li>
+                <li class="list-group-item">Info2</li>
+                <li class="list-group-item">Info3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div style="background-image: url(<%= campground.image %>)" class="image-show d-block"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <div style="background-image: url(http://prod-upp-image-read.ft.com/ae027f90-a16a-11e6-891e-abe238dee8e2)" class="image-show d-block"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <div style="background-image: url(<%= campground.image %>)" class="image-show d-block"></div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span aria-hidden="true"><i class="fas fa-angle-left fa-3x"></i></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span aria-hidden="true"><i class="fas fa-angle-right fa-3x"></i></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+               
+                <div class="caption-full">
+                    <h4 class="pull-right">$9.00/night</h4>
+                    <h4><a href=""><%= campground.name %></a></h4>
+                    <p><%= campground.description %></p>
+                    <p>
+                        <em>Submitted by: 
+                            <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %>
+                        </em>
+                    </p>
+                    <% if(currentUser && (campground.author.id.equals(currentUser._id)||currentUser.isAdmin)){%>
+                        <a class="btn btn-sm btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                        <form class="deleteForm" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            
+            
+            <!--Review section-->
+            
+            <div class="thumbnail">
+                <div class="caption-full">
+                    <% if (campground.rating === 0) { %>
+                    <h5>
+                        <em>No reviews yet</em>
+                    </h5>
+                    <% } else { %>
+                    <p>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+                        <em>(total reviews: <%= campground.reviews.length %>)</em>
+                    </p>
+                    <p>
+                        Current campground rating: <strong><%= campground.rating.toFixed(2) %></strong>
+                    </p>
+                    <p><h4>Latest reviews for this campground:</h4></p>
+                    <hr style="margin-top: 0;">
+                    <% campground.reviews.slice(0, 5).forEach(function(review){ %>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+                            <div>Review by: <strong><%= review.author.username %></strong></div>
+                            <span><em><%= review.updatedAt.toDateString() %></em></span>
+                        </div>
+                        <div class="col-md-9">
+                            <p style="text-align: justify; word-wrap: break-word;">
+                                <%= review.text %>
+                            </p>
+                            <% if(currentUser && (review.author.id.equals(currentUser._id)||currentUser.isAdmin)){ %>
+                            <a class="btn btn-sm btn-warning"
+                               href="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                            <form class="deleteForm" action="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <hr>
+                    <% }); %>
+                    <div style="margin-bottom: 10px;">
+                        <h4><a href="/campgrounds/<%= campground._id %>/reviews"><i class="fa fa-search fa-xs" aria-hidden="true"></i> See all reviews</a></h4>
+                    </div>
+                    <% } %>
+                    <div>
+                        <% if(currentUser && !campground.reviews.some(function (review){return review.author.id.equals(currentUser._id)})){%>
+                        <a class="btn btn-outline-primary btn-md" href="/campgrounds/<%= campground._id %>/reviews/new">
+                            Write a New Review
+                        </a>
+                        <% } %> 
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer%>

@@ -1,0 +1,57 @@
+#campground {
+    display: flex; 
+    flex-wrap: wrap;
+}
+.card-footer{
+    background: none;
+    border-top: hidden;
+}
+.image{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+}
+
+.image-show{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+.jumbotron{
+    background-color: #F7F7F9;
+}
+.thumbnail img {
+    width: 100%;
+}
+.thumbnail {
+    padding: 0;
+}
+.thumbnail .caption-full {
+    padding: 9px;
+}
+.deleteForm {
+    display: inline;
+}
+.checked {
+    color: orange;
+}
+
+.form-control:focus{
+    border-color: #596169;  
+    box-shadow: none; 
+    -webkit-box-shadow: none;
+    
+} 
+.has-error .form-control:focus{
+    box-shadow: none; 
+    -webkit-box-shadow: none;
+}
