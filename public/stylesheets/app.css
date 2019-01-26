@@ -12,6 +12,12 @@
     background-size: cover;
     height: 200px;
 }
+.image-sm{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+}
 
 .image-show{
     background-position: center;
@@ -24,6 +30,24 @@
   width: 10px;
   height: 10px;
   border-radius: 100%;
+}
+
+.user {
+    font-size: 8em; 
+    color: #596169;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    background-color: #F7F7F9;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.fa-user:before {
+    height: 200px;
+    content: "\f007";
+    line-height: 200px;
 }
 
 .jumbotron{

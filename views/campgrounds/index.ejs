@@ -18,20 +18,20 @@
             <div class="col-md-3 col-sm-6 mb-5">
                 <div class="card h-100">
                     <div style="background-image: url(<%= campground.image %>)" class="image"></div>
-                        <div class="card-body align-items-center">
-                            <h5 class="card-title mb-0"><%= campground.name %></h5>
-                            <% if (campground.rating === 0) { %>
-                                <div class="mb-3"><em>No reviews yet</em></div>
-                            <% } else { %>
-                                <div class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
-                                    <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
-                                    <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
-                                    <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
-                                </div>
-                            <% } %>
-                        </div>
+                    <div class="card-body align-items-center">
+                        <h5 class="card-title mb-0"><%= campground.name %></h5>
+                        <% if (campground.rating === 0) { %>
+                            <div class="mb-3"><em>No reviews yet</em></div>
+                        <% } else { %>
+                            <div class="mb-3">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+                            </div>
+                        <% } %>
+                    </div>
                     <div class="card-footer mb-2">
                         <a href="/campgrounds/<%=campground._id %>" class="btn btn-outline-primary">More Info</a>
                     </div>
