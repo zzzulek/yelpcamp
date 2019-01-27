@@ -35,11 +35,25 @@ router.get("/login", function(req, res) {
     res.render("login");
 });
 
-router.post("/login", passport.authenticate("local", 
-    {
-        successRedirect: "/campgrounds", 
-        failureRedirect: "/login"
-    }), function(req, res){
+router.post("/login", passport.authenticate("local",
+        {
+            failureRedirect: "/login"
+        }), function(req, res){
+        var query = {
+            'username': req.user.username
+        };
+        var update = {
+            last_login_date: Date.now()
+        };
+        var options = {
+            new: true
+        };
+        User.findOneAndUpdate(query, update, options, function(err, user) {
+            if (err) {
+                console.log(err);
+            }
+            res.redirect("/campgrounds");
+        });
      req.flash("success", "Welcome to YelpCamp " + req.body.username);
 });
 

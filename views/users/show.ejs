@@ -6,7 +6,7 @@
             <div class="text-center ">
             	<span><i class="fas fa-user user"></i></span>
             	<h3 class="my-2"><%= user.firstName + " " + user.lastName %></h3>
-            	<p class="text-muted"><em>Last seen </em></p>
+            	<p class="text-muted"><em>Last seen <%=user.last_login_date%></em></p>
 				<div class="caption">
 					<a href="mailto:<%= user.email %>"><%= user.email %></a>
 				</div>
@@ -21,9 +21,11 @@
                 <li class="nav-item">
                     <a href="" data-target="#campgrounds" data-toggle="tab" class="nav-link">Campgrounds</a>
                 </li>
-                <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                </li>
+                <% if(currentUser && user._id.equals(currentUser._id)){%>
+                    <li class="nav-item">
+                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                    </li>
+                <% } %>
             </ul>
             <div class="tab-content p-b-3">
                 <div class="tab-pane active px-1" id="profile">
