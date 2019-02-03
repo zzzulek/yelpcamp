@@ -15,8 +15,8 @@ router.get("/register", function(req, res) {
 });
 
 router.post("/register", function(req, res){
-    var newUser = new User({username: req.body.username});
-    if(req.body.username==="zulya"&&req.body.password==="zulya"){
+    var newUser = new User({email: req.body.email});
+    if(req.body.email==="zulfiya.k@mail.ru"&&req.body.password==="zulya"){
         newUser.isAdmin = true;
     }
     User.register(newUser, req.body.password, function(error, user){
@@ -25,7 +25,7 @@ router.post("/register", function(req, res){
             return res.render("register");
         } 
         passport.authenticate("local")(req, res, function(){
-            req.flash("success", "Welcome to YelpCamp " + user.username);
+            req.flash("success", "Welcome to YelpCamp " + user.email);
             res.redirect("/campgrounds");
         });
     });
@@ -40,7 +40,7 @@ router.post("/login", passport.authenticate("local",
             failureRedirect: "/login"
         }), function(req, res){
         var query = {
-            'username': req.user.username
+            'email': req.user.email
         };
         var update = {
             last_login_date: Date.now()
@@ -54,7 +54,7 @@ router.post("/login", passport.authenticate("local",
             }
             res.redirect("/campgrounds");
         });
-     req.flash("success", "Welcome to YelpCamp " + req.body.username);
+     req.flash("success", "Welcome to YelpCamp " + req.body.email);
 });
 
 router.get("/logout", function(req, res){
