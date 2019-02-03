@@ -33,9 +33,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h6>About</h6>
-                            <p>Web Designer, UI/UX Engineer</p>
+                            <p><%= user.about %></p>
                             <h6>Hobbies</h6>
-                            <p>Indie music, skiing and hiking. I love the great outdoors.</p>
+                            <p><%= user.hobbies %></p>
                         </div>
                     </div>
                     <!--/row-->
@@ -53,60 +53,72 @@
                 </div>
                 <div class="tab-pane px-1" id="edit">
                     <h4 class="m-y-2">Edit Profile</h4>
-                    <form role="form">
+                    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">First name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Jane">
+                                <input class="form-control" type="text" name="user[firstName]" value="<%= user.firstName %>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Bishop">
+                                <input class="form-control" type="text" name="user[lastName]" value="<%= user.lastName %>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="email" value="email@gmail.com">
+                                <input class="form-control" type="email" name="user[email]" value="<%= user.email %>" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Country</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" placeholder="Country">
+                                <input class="form-control" type="text" name="user[country]" value="<%= user.country %>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">City</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" placeholder="City">
+                                <input class="form-control" type="text" name="user[city]" value="<%= user.city %>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Username</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="janeuser">
+                                <input class="form-control" type="text" name="user[username]" value="<%= user.username %>" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">About</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" name="user[about]" value="<%= user.about %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Hobbies</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" name="user[hobbies]" value="<%= user.hobbies %>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Password</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
+                                <input class="form-control" type="password" name="user[password]" value="<%= user.password %>" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
+                                <input class="form-control" type="password" name="user[password]" value="<%= user.password %>" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-                                <input type="reset" class="btn btn-outline-secondary" value="Cancel">
-                                <input type="button" class="btn btn-outline-primary" value="Save Changes">
+                                <a href="/users/<%= user._id %>" class="btn btn-outline-secondary">Cancel</a>
+                                <input type="submit" class="btn btn-outline-primary" value="Save Changes">
                             </div>
                         </div>
                     </form>

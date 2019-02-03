@@ -79,4 +79,15 @@ router.get("/users/:id", middleware.isLoggedIn, function(req, res) {
   });
 });
 
+router.put("/users/:id", middleware.isLoggedIn, function(req, res) {
+    
+    User.findByIdAndUpdate(req.params.id, req.body.user, function(error, user){
+        if(error){
+            req.flash("error", "Something went wrong.");
+            res.redirect("/campgrounds");
+        } else {
+            res.redirect("/users/" + req.params.id);
+        }
+    });
+});
 module.exports = router;
