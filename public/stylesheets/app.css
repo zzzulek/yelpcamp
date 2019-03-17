@@ -1,7 +1,26 @@
+.body{
+    background-color: #EFFFF8;
+}
+
 #campground {
     display: flex; 
     flex-wrap: wrap;
 }
+
+.navbar{
+    background-color: #F5F5F7;
+}
+
+.navbar.scrolled{
+    background-color: #2060F3;
+    transition: background 500ms;
+}
+
+.jumbotron{
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
 .card-footer{
     background: none;
     border-top: hidden;
@@ -79,3 +98,4 @@
     box-shadow: none; 
     -webkit-box-shadow: none;
 }
+
