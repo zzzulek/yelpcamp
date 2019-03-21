@@ -1,8 +1,11 @@
 
 body{
-    /*background-color: #E5F7FC;*/
+    background: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80") no-repeat fixed center;
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
+    font-weight: 100;
+    padding-top: 85px;
+    color: #564547;
 }
 
 #campground {
@@ -49,8 +52,7 @@ body{
 
 .jumbotron{
     background-color: #C9ABAE;
-    margin-top: 90px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #564547;
     font-weight: 100;
 }
@@ -76,12 +78,14 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
     height: 200px;
 }
 .image-sm{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
     height: 100px;
 }
 
@@ -89,6 +93,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
     height: 500px;
 }
 
@@ -100,11 +105,12 @@ body{
 
 .user {
     font-size: 8em; 
-    color: #596169;
+    color: #685456;
     width: 200px;
     height: 200px;
     text-align: center;
-    background-color: #F7F7F9;
+    background-color: #F4ECE8;
+    box-shadow: 3px 3px 7px grey;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -164,6 +170,7 @@ body{
     -webkit-box-shadow: none;
     
 } 
+
 .has-error .form-control:focus{
     box-shadow: none; 
     -webkit-box-shadow: none;
@@ -177,14 +184,13 @@ body{
 
 
 .pagination > li > a {
-   border: 1px solid ;
-   border-color: #D5D0D0;
+   border: 1px solid #D5D0D0;
 }
 
 .page-item.active .page-link {
     color: #685456;
     border: 1px solid #685456;
-    background-color: transparent;
+    background-color: white;
 }
 
 .page-item.active .page-link:hover {
@@ -197,3 +203,90 @@ body{
     color: #BAB1B2;
     border:1px solid #D5D0D0;
 }
+
+.container .container-alert {
+    margin-top: 80px;
+    margin-bottom: -40px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #685456;
+    color: #685456;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+    background-color: transparent;
+    color: #685456;
+    border: 1px solid #685456;
+    border-bottom-color: #dee2e6;
+    font-weight: 200;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link:hover{
+    box-shadow: none;
+    border-bottom-color: #685456;
+    border-color: transparent;
+    font-weight: 200;
+    color: #4C3E3F;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active:hover{
+    background-color: transparent;
+    color: #4C3E3F;
+    border: 1px solid #685456;
+    border-bottom-color: #dee2e6;
+    font-weight: 200;
+}
+
+.nav-tabs .nav-link {
+    color: #685456;
+}
+
+.campground-name {
+    color: #685456;
+    font-weight: 300;
+}
+
+.campground-name:hover{
+    color: #4C3E3F;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.campground-name-bold {
+    color: #685456;
+    font-size: large;
+    font-weight: 500;
+}
+
+.campground-name-bold:hover {
+    color: #4C3E3F;
+    font-size: large;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.btn-danger{
+    background-color: transparent;
+    border-color: #A33144;
+    color: #A33144;
+}
+.btn-danger:hover{
+    background-color: #952D3E;
+    box-shadow: none;
+}
+
+.btn-warning{
+    background-color: transparent;
+    border-color: #4D5D4E;
+    color: #4D5D4E;
+}
+
+.btn-warning:hover{
+    background-color: #567057;
+    box-shadow: none;
+}
+
+/*.alert-success{*/
+/*    background-color: #E3FFFA;*/
+/*}*/

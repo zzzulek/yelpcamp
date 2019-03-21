@@ -5,7 +5,7 @@
         <div class="col-md-4">
             <div class="text-center ">
             	<span><i class="fas fa-user user"></i></span>
-            	<h3 class="my-2"><%= user.firstName + " " + user.lastName %></h3>
+            	<h3 class="my-2"><%= user.username %></h3>
             	<p class="text-muted"><em>Last seen <%=user.last_login_date%></em></p>
 				<div class="caption">
 					<a href="mailto:<%= user.email %>"><%= user.email %></a>
@@ -16,19 +16,19 @@
         <div class="col-md-8">
             <ul class="nav nav-tabs mb-2">
                 <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                    <a href="" data-target="#about" data-toggle="tab" class="nav-link active">About</a>
                 </li>
                 <li class="nav-item">
                     <a href="" data-target="#campgrounds" data-toggle="tab" class="nav-link">Campgrounds</a>
                 </li>
                 <% if(currentUser && user._id.equals(currentUser._id)){%>
                     <li class="nav-item">
-                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit Profile</a>
                     </li>
                 <% } %>
             </ul>
             <div class="tab-content p-b-3">
-                <div class="tab-pane active px-1" id="profile">
+                <div class="tab-pane active px-1" id="about">
                     <h4 class="m-y-2">User Profile</h4>
                     <div class="row">
                         <div class="col-md-6">
@@ -46,7 +46,7 @@
         			    <% campgrounds.forEach(function(campground) { %>
         			        <div class="col-md-3 col-sm-6 mb-3">
                                 <div style="background-image: url(<%= campground.image %>)" class="image-sm"></div>
-                                <p class="text-center"><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></p>
+                                <p class="text-center"><a class="campground-name" href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></p>
                             </div>
         			    <% }); %>
                     </div>
@@ -55,21 +55,9 @@
                     <h4 class="m-y-2">Edit Profile</h4>
                     <form action="/users/<%= user._id %>?_method=PUT" method="POST">
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" name="user[firstName]" value="<%= user.firstName %>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" name="user[lastName]" value="<%= user.lastName %>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="email" name="user[email]" value="<%= user.email %>" disabled>
+                                <input class="form-control" type="text" name="user[username]" value="<%= user.username %>" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -85,12 +73,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" name="user[username]" value="<%= user.username %>" disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">About</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" name="user[about]" value="<%= user.about %>">
@@ -100,6 +82,12 @@
                             <label class="col-lg-3 col-form-label form-control-label">Hobbies</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" name="user[hobbies]" value="<%= user.hobbies %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="email" name="user[email]" value="<%= user.email %>" disabled>
                             </div>
                         </div>
                         <div class="form-group row">

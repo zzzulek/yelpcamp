@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="/stylesheets/app.css">
     </head>
     <body>
-        <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-lg fixed-top shadow">
-            <a class="navbar-brand display-inline d-flex align-items-center flex-wrap w-30 mr-auto" href="/"><i class="fas fa-globe-europe fa-lg mx-2"></i>YelpCamp</a>
+        <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-lg fixed-top shadow mb-5">
+            <a class="navbar-brand display-inline d-flex align-items-center flex-wrap w-30 mr-auto" href="/"><i class="fas fa-globe-europe fa-lg mr-2"></i>YelpCamp</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
             data-target="#collapsingNavbar" aria-controls="navbarToggler" 
             aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,7 @@
             </button>
             <div class="navbar-collapse collapse" id="collapsingNavbar">
                 <ul class="navbar-nav ml-auto">
-                    <form class="form-inline my-2 my-0" action="/campgrounds" method="GET">
+                    <form class="form-inline my-2" action="/campgrounds" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" name="search" placeholder="Campground search...">
                             <div class="input-group-append">
@@ -42,7 +42,7 @@
         <% if(currentUser){ %>
         <!--<span class="mr-auto">Signed In As <%= currentUser.username %></span>-->
         <% } %>
-        <div class="container">
+        <div class="container container-alert">
             <% if(error && error.length>0){ %>
                 <div class="alert alert-danger" role="alert"><%= error %></div>
             <% } %>

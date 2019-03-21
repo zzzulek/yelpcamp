@@ -41,7 +41,7 @@ router.post("/login", passport.authenticate("local",
             failureFlash: true 
         }), function(req, res){
         var query = {
-            'username': req.user.username
+            'email': req.user.email
         };
         var update = {
             last_login_date: Date.now()
@@ -53,9 +53,9 @@ router.post("/login", passport.authenticate("local",
             if (err) {
                 console.log(err);
             }
+            req.flash("success", "Welcome to YelpCamp " + user.username);
             res.redirect("/campgrounds");
         });
-     req.flash("success", "Welcome to YelpCamp " + req.body.username);
 });
 
 router.get("/logout", function(req, res){
